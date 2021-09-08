@@ -83,6 +83,7 @@ h1 {
   border-radius: 12px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 60%;
   align-items: center;
 }
@@ -92,6 +93,30 @@ h1 {
 .quote--icon {
   padding: 30px;
   width: 80px;
+}
+
+
+.quote-button {
+  color: var(--header-textbox-color);
+  background-color: var(--main-bg-color);
+  border-radius: 6px;
+  padding: 7px 20px;
+  border: none;
+}
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.favorites-item {
+  background-color: var(--header-textbox-color);
+  padding: 20px;
+  border-radius: 12px;
+  align-items: center;
+  margin: 15px;
 }
 
 .hidden {

@@ -4,11 +4,25 @@ var affirmationInput = document.querySelector("#affirmation-radio");
 var mantraInput = document.querySelector("#mantra-radio");
 var messageBox = document.querySelector(".quote");
 var messageIcon = document.querySelector(".quote--icon");
+var messageQuote = document.querySelector(".quote-text");
+var favoriteContainer = document.querySelector(".quote-button-list");
+var favoriteButton = document.querySelector("#favorite-button");
+var backButton = document.querySelector("#view-main")
+var viewFavoritesButton = document.querySelector("#view-favorites");
+var inputSection = document.querySelector(".message-selection");
+var favoritesSection = document.querySelector(".favorites");
+var favoritesContainer = document.querySelector(".favorites-container");
 
 //Event listeners
+window.addEventListener("load", checkLocalStorage);
 messageButton.addEventListener("click", displayQuote);
+backButton.addEventListener("click", returnToMain);
+viewFavoritesButton.addEventListener("click", showFavorites);
+favoriteButton.addEventListener("click", addFavorites);
 
 var currentQuote = "";
+
+var favoriteQuotes = [];
 
 var mantras = [
   "Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.",
@@ -44,6 +58,16 @@ var affirmations = [
 "I manifest perfect health by making smart choices."
 ]
 
+function checkLocalStorage() {
+  console.log("function called");
+  if (!localStorage.getItem("localFavoriteQuotes")) {
+    console.log("localStorage is false");
+  } else {
+    favoriteQuotes = JSON.parse(window.localStorage.getItem("localFavoriteQuotes"));
+    console.log(favoriteQuotes);
+  }
+}
+
 function randomArray(array) {
   var currentIndex = Math.floor(Math.random() * array.length);
   return randArray = array[currentIndex];
@@ -54,9 +78,11 @@ function displayQuote() {
   currentQuote = randomArray(currentInput);
   if (!messageIcon.classList.contains("hidden")) {
     messageIcon.classList.add("hidden");
+    favoriteContainer.classList.remove("hidden");
+    messageQuote.classList.remove("hidden");
   }
 
-  messageBox.innerText = currentQuote;
+  messageQuote.innerText = currentQuote;
 
 }
 
@@ -65,5 +91,37 @@ function checkInput() {
     return affirmations
   } else if (mantraInput.checked) {
     return mantras
+  }
+}
+
+function toggleVisibility(section) {
+  section.classList.toggle("hidden");
+}
+
+function showFavorites() {
+  toggleVisibility(messageBox);
+  toggleVisibility(inputSection);
+  toggleVisibility(favoritesSection);
+  populateFavorites();
+}
+
+function populateFavorites() {
+  for (var i = 0; i < favoriteQuotes.length; i++) {
+    var savedQuoteHTML = `<article class="favorites-item">${favoriteQuotes[i]}</article>`;
+    favoritesContainer.innerHTML += savedQuoteHTML;
+  }
+}
+
+function returnToMain() {
+  toggleVisibility(messageBox);
+  toggleVisibility(inputSection);
+  toggleVisibility(favoritesSection);
+  favoritesContainer.innerHTML = "";
+}
+
+function addFavorites() {
+  if (!favoriteQuotes.includes(currentQuote)) {
+    favoriteQuotes.push(currentQuote);
+    window.localStorage.setItem("localFavoriteQuotes", JSON.stringify(favoriteQuotes));
   }
 }
