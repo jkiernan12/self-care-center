@@ -8,7 +8,7 @@
   <body>
     <div class="wrapper">
     <h1 class="page-title">✨ Self Care Center ✨</h1>
-    <section class="message-form">
+    <section class="message-form" id="form-section">
       <h2 class="messsage-form__header">Which type of message?</h2>
       <form class="message-form__container">
         <div class="message-form__inputs-container">
@@ -17,19 +17,19 @@
           <input type ="radio" name="quote" value="mantra" id="mantra-radio" class="message-slection__input">
           <label>mantra</label>
         </div>
-        <button type="button" class="message-form__button">Receive Message</button>
+        <button type="button" class="message-form__button" id="message-button">Receive Message</button>
       </form>
     </section>
-    <section class="quote">
-      <img class="quote__icon" src="assets/meditate.svg">
-      <h3 class="quote__text hidden"></h3>
-      <div class="quote__button-container hidden">
+    <section class="quote" id="quote-section">
+      <img class="quote__icon" id="quote-icon" src="assets/meditate.svg">
+      <h3 class="quote__text hidden" id="quote-text"></h3>
+      <div class="quote__button-container hidden" id="quote-button-container">
       <button type="button" class="quote__button" id="favorite-button">Add to Favorites</button>
       <button type="button" class="quote__button" id="view-favorites">View Favorites</button>
       </div>
     </section>
-    <section class="favorites hidden">
-      <div class="favorites-container">
+    <section class="favorites hidden" id="favorites-section">
+      <div class="favorites-container" id="favorites-container-section">
       </div>
       <button type="button" class="quote__button" id="view-main">Back</button>
     </section>
