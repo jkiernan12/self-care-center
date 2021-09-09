@@ -24,7 +24,7 @@ viewFavoritesButton.addEventListener("click", showFavorites);
 favoriteButton.addEventListener("click", addFavorites);
 favoritesContainer.addEventListener("click", deleteFavorites)
 
-// Global variables 
+// Global variables
 var currentQuote = "";
 
 var favoriteQuotes = [];
@@ -127,11 +127,11 @@ function addFavorites() {
 }
 
 function deleteFavorites(event) {
-  var selectedItemIndex = parseInt(event.target.dataset.index, 10)
+  var selectedItemIndex = event.target.dataset.index;
   if (!isNaN(selectedItemIndex)) {
     favoriteQuotes.splice(selectedItemIndex, 1);
     refreshLocalStorage();
-    clearFavoritesHTML()
+    clearFavoritesHTML();
     populateFavorites();
   }
 }
