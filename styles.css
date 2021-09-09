@@ -2,17 +2,14 @@
   --text-color: #000000;
   --header-textbox-color: #ffffff;
   --main-bg-color: #134d71;
-  --secondary-bg-color: #78a7c6;;
+  --secondary-bg-color: #78a7c6;
   --tertiary-bg-color: #f7e4bf;
 }
 
 body {
   font-family: 'Quicksand', sans-serif;
   color: var(--text-color);
-  background-image: linear-gradient(var(--main-bg-color), var(--secondary-bg-color), var(--tertiary-bg-color));
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  background: linear-gradient(var(--main-bg-color), var(--secondary-bg-color), var(--tertiary-bg-color)) center no-repeat fixed;
 }
 
 .page-title {
@@ -82,6 +79,7 @@ body {
   border-radius: 6px;
   padding: 7px 20px;
   border: none;
+  transition: .1s;
 }
 
 .quote--text {
@@ -100,4 +98,13 @@ body {
 
 .hidden {
   display: none;
+}
+
+button:hover {
+  background-color: var(--secondary-bg-color);
+}
+
+button:active {
+  background-color: var(--main-bg-color);
+  transform: translateY(2px);
 }
