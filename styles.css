@@ -28,7 +28,7 @@ body {
   color: var(--text-color);
 }
 
-h1 {
+.page-title {
   color: var(--header-textbox-color)
 }
 
@@ -41,13 +41,13 @@ h1 {
   min-height: 75vh;
 }
 
-.message-selection {
+.message-form {
   display: flex;
   flex-direction: column;
   min-width: 40%;
 }
 
-.message-selection--container {
+.message-form__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,7 +58,7 @@ h1 {
   padding: 20px;
 }
 
-.message-selection--inputs {
+.message-form__inputs-container {
   padding: 20px;
   display: flex;
   flex-direction: row;
@@ -66,12 +66,12 @@ h1 {
   margin: 0px 15px;
 }
 
-.messsage-selection--header {
+.messsage-form__header {
   color: var(--header-textbox-color);
   text-align: center;
 }
 
-.message-selection--button {
+.message-form__button {
   color: var(--header-textbox-color);
   background-color: var(--main-bg-color);
   border-radius: 6px;
@@ -92,13 +92,13 @@ h1 {
 .quote--text {
   text-align: center;
 }
-.quote--icon {
+.quote__icon {
   padding: 30px;
   width: 80px;
 }
 
 
-.quote-button {
+.quote__button {
   color: var(--header-textbox-color);
   background-color: var(--main-bg-color);
   border-radius: 6px;
@@ -113,7 +113,7 @@ h1 {
   align-items: center;
 }
 
-.favorites-item {
+.favorites__quote {
   background-color: var(--header-textbox-color);
   padding: 20px;
   border-radius: 12px;
@@ -124,7 +124,7 @@ h1 {
   justify-content: space-between;
 }
 
-.favorite-delete {
+.favorites__delete-btn {
   color: var(--header-textbox-color);
   background-color: var(--main-bg-color);
   border-radius: 60px;

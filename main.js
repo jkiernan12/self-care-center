@@ -1,17 +1,20 @@
 // Query selectors
-var messageButton = document.querySelector(".message-selection--button");
-var affirmationInput = document.querySelector("#affirmation-radio");
-var mantraInput = document.querySelector("#mantra-radio");
-var messageBox = document.querySelector(".quote");
-var messageIcon = document.querySelector(".quote--icon");
-var messageQuote = document.querySelector(".quote-text");
-var favoriteContainer = document.querySelector(".quote-button-list");
+// Sections & Elements
+var inputSection = document.querySelector(".message-form");
+var favoritesSection = document.querySelector(".favorites");
+var quoteSection = document.querySelector(".quote");
+var favoritesContainer = document.querySelector(".favorites-container");
+var favoriteContainer = document.querySelector(".quote__button-container");
+var messageIcon = document.querySelector(".quote__icon");
+var messageQuote = document.querySelector(".quote__text");
+
+// Buttons & Inputs
 var favoriteButton = document.querySelector("#favorite-button");
 var backButton = document.querySelector("#view-main")
 var viewFavoritesButton = document.querySelector("#view-favorites");
-var inputSection = document.querySelector(".message-selection");
-var favoritesSection = document.querySelector(".favorites");
-var favoritesContainer = document.querySelector(".favorites-container");
+var messageButton = document.querySelector(".message-form__button");
+var affirmationInput = document.querySelector("#affirmation-radio");
+var mantraInput = document.querySelector("#mantra-radio");
 
 //Event listeners
 window.addEventListener("load", checkLocalStorage);
@@ -21,6 +24,7 @@ viewFavoritesButton.addEventListener("click", showFavorites);
 favoriteButton.addEventListener("click", addFavorites);
 favoritesContainer.addEventListener("click", deleteFavorites)
 
+// Global variables 
 var currentQuote = "";
 
 var favoriteQuotes = [];
@@ -59,29 +63,22 @@ var affirmations = [
 "I manifest perfect health by making smart choices."
 ]
 
-function checkLocalStorage() {
-  if (!localStorage.getItem("localFavoriteQuotes")) {
-  } else {
-    favoriteQuotes = JSON.parse(window.localStorage.getItem("localFavoriteQuotes"));
+// Display quote functions
+function displayQuote() {
+  var currentInput = checkInput();
+  currentQuote = randomArray(currentInput);
+  if (!messageIcon.classList.contains("hidden")) {
+    toggleVisibility(messageIcon);
+    toggleVisibility(favoriteContainer);
+    toggleVisibility(messageQuote);
   }
+
+  messageQuote.innerText = currentQuote;
 }
 
 function randomArray(array) {
   var currentIndex = Math.floor(Math.random() * array.length);
   return randArray = array[currentIndex];
-}
-
-function displayQuote() {
-  var currentInput = checkInput();
-  currentQuote = randomArray(currentInput);
-  if (!messageIcon.classList.contains("hidden")) {
-    messageIcon.classList.add("hidden");
-    favoriteContainer.classList.remove("hidden");
-    messageQuote.classList.remove("hidden");
-  }
-
-  messageQuote.innerText = currentQuote;
-
 }
 
 function checkInput() {
@@ -92,12 +89,21 @@ function checkInput() {
   }
 }
 
+//Navigation functions
+function returnToMain() {
+  toggleVisibility(quoteSection);
+  toggleVisibility(inputSection);
+  toggleVisibility(favoritesSection);
+  clearFavoritesHTML();
+}
+
 function toggleVisibility(section) {
   section.classList.toggle("hidden");
 }
 
+// Favorite Quote functions
 function showFavorites() {
-  toggleVisibility(messageBox);
+  toggleVisibility(quoteSection);
   toggleVisibility(inputSection);
   toggleVisibility(favoritesSection);
   populateFavorites();
@@ -105,30 +111,12 @@ function showFavorites() {
 
 function populateFavorites() {
   for (var i = 0; i < favoriteQuotes.length; i++) {
-    var savedQuoteHTML = `<article class="favorites-item">
+    var savedQuoteHTML = `<article class="favorites__quote">
     <p>${favoriteQuotes[i]}</p>
-    <button type="button" data-index="${i}" class="favorite-delete">x</button>
+    <button type="button" data-index="${i}" class="favorites__delete-btn">x</button>
     </article>`;
     favoritesContainer.innerHTML += savedQuoteHTML;
   }
-}
-
-function deleteFavorites(event) {
-  var selectedItemIndex = parseInt(event.target.dataset.index, 10)
-  console.log(selectedItemIndex);
-  if (!isNaN(selectedItemIndex)) {
-    favoriteQuotes.splice(selectedItemIndex, 1);
-    refreshLocalStorage();
-    favoritesContainer.innerHTML = "";
-    populateFavorites();
-  }
-}
-
-function returnToMain() {
-  toggleVisibility(messageBox);
-  toggleVisibility(inputSection);
-  toggleVisibility(favoritesSection);
-  favoritesContainer.innerHTML = "";
 }
 
 function addFavorites() {
@@ -138,6 +126,28 @@ function addFavorites() {
   }
 }
 
+function deleteFavorites(event) {
+  var selectedItemIndex = parseInt(event.target.dataset.index, 10)
+  if (!isNaN(selectedItemIndex)) {
+    favoriteQuotes.splice(selectedItemIndex, 1);
+    refreshLocalStorage();
+    clearFavoritesHTML()
+    populateFavorites();
+  }
+}
+
+function clearFavoritesHTML() {
+    favoritesContainer.innerHTML = "";
+}
+
+// Local Storage functions
 function refreshLocalStorage() {
   window.localStorage.setItem("localFavoriteQuotes", JSON.stringify(favoriteQuotes));
+}
+
+function checkLocalStorage() {
+  if (!localStorage.getItem("localFavoriteQuotes")) {
+  } else {
+    favoriteQuotes = JSON.parse(window.localStorage.getItem("localFavoriteQuotes"));
+  }
 }

@@ -7,34 +7,31 @@
   </head>
   <body>
     <div class="wrapper">
-    <h1>✨ Self Care Center ✨</h1>
-    <section class="message-selection">
-      <h2 class="messsage-selection--header">Which type of message?</h2>
-      <form class="message-selection--container">
-        <div class="message-selection--inputs">
-          <input type="radio" name="quote" value="affirmation" id="affirmation-radio" class="message-selection--input" checked>
+    <h1 class="page-title">✨ Self Care Center ✨</h1>
+    <section class="message-form">
+      <h2 class="messsage-form__header">Which type of message?</h2>
+      <form class="message-form__container">
+        <div class="message-form__inputs-container">
+          <input type="radio" name="quote" value="affirmation" id="affirmation-radio" class="message-selection__input" checked>
           <label>affirmation</label>
-          <input type ="radio" name="quote" value="mantra" id="mantra-radio" class="message-slection--input">
+          <input type ="radio" name="quote" value="mantra" id="mantra-radio" class="message-slection__input">
           <label>mantra</label>
         </div>
-        <button type="button" class="message-selection--button">Receive Message</button>
+        <button type="button" class="message-form__button">Receive Message</button>
       </form>
-
-
-
     </section>
     <section class="quote">
-      <img class="quote--icon" src="assets/meditate.svg">
-      <h3 class="quote-text hidden"></h3>
-      <div class="quote-button-list hidden">
-      <button type="button" class="quote-button" id="favorite-button">Add to Favorites</button>
-      <button type="button" class="quote-button" id="view-favorites">View Favorites</button>
+      <img class="quote__icon" src="assets/meditate.svg">
+      <h3 class="quote__text hidden"></h3>
+      <div class="quote__button-container hidden">
+      <button type="button" class="quote__button" id="favorite-button">Add to Favorites</button>
+      <button type="button" class="quote__button" id="view-favorites">View Favorites</button>
       </div>
     </section>
     <section class="favorites hidden">
       <div class="favorites-container">
       </div>
-      <button type="button" class="quote-button" id="view-main">Back</button>
+      <button type="button" class="quote__button" id="view-main">Back</button>
     </section>
   </div>
     <script type="text/javascript" src="main.js"></script>
