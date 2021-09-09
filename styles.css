@@ -16,12 +16,14 @@ black - #000000;
 
 html {
   height: 100%;
-}
-
-body {
   background-image: linear-gradient(var(--main-bg-color), var(--secondary-bg-color), var(--tertiary-bg-color));
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
+}
+
+body {
+
   font-family: 'Quicksand', sans-serif;
   color: var(--text-color);
 }
@@ -117,6 +119,18 @@ h1 {
   border-radius: 12px;
   align-items: center;
   margin: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.favorite-delete {
+  color: var(--header-textbox-color);
+  background-color: var(--main-bg-color);
+  border-radius: 60px;
+  padding: 7px 10px;
+  border: none;
+  margin-left: 20px;
 }
 
 .hidden {

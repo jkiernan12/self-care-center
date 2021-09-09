@@ -19,6 +19,7 @@ messageButton.addEventListener("click", displayQuote);
 backButton.addEventListener("click", returnToMain);
 viewFavoritesButton.addEventListener("click", showFavorites);
 favoriteButton.addEventListener("click", addFavorites);
+favoritesContainer.addEventListener("click", deleteFavorites)
 
 var currentQuote = "";
 
@@ -59,12 +60,9 @@ var affirmations = [
 ]
 
 function checkLocalStorage() {
-  console.log("function called");
   if (!localStorage.getItem("localFavoriteQuotes")) {
-    console.log("localStorage is false");
   } else {
     favoriteQuotes = JSON.parse(window.localStorage.getItem("localFavoriteQuotes"));
-    console.log(favoriteQuotes);
   }
 }
 
@@ -107,8 +105,22 @@ function showFavorites() {
 
 function populateFavorites() {
   for (var i = 0; i < favoriteQuotes.length; i++) {
-    var savedQuoteHTML = `<article class="favorites-item">${favoriteQuotes[i]}</article>`;
+    var savedQuoteHTML = `<article class="favorites-item">
+    <p>${favoriteQuotes[i]}</p>
+    <button type="button" data-index="${i}" class="favorite-delete">x</button>
+    </article>`;
     favoritesContainer.innerHTML += savedQuoteHTML;
+  }
+}
+
+function deleteFavorites(event) {
+  var selectedItemIndex = parseInt(event.target.dataset.index, 10)
+  console.log(selectedItemIndex);
+  if (!isNaN(selectedItemIndex)) {
+    favoriteQuotes.splice(selectedItemIndex, 1);
+    refreshLocalStorage();
+    favoritesContainer.innerHTML = "";
+    populateFavorites();
   }
 }
 
@@ -122,6 +134,10 @@ function returnToMain() {
 function addFavorites() {
   if (!favoriteQuotes.includes(currentQuote)) {
     favoriteQuotes.push(currentQuote);
-    window.localStorage.setItem("localFavoriteQuotes", JSON.stringify(favoriteQuotes));
+    refreshLocalStorage();
   }
+}
+
+function refreshLocalStorage() {
+  window.localStorage.setItem("localFavoriteQuotes", JSON.stringify(favoriteQuotes));
 }
