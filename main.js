@@ -1,18 +1,18 @@
 // Query selectors
 // Sections & Elements
-var inputSection = document.querySelector(".message-form");
-var favoritesSection = document.querySelector(".favorites");
-var quoteSection = document.querySelector(".quote");
-var favoritesContainer = document.querySelector(".favorites-container");
-var favoriteContainer = document.querySelector(".quote__button-container");
-var messageIcon = document.querySelector(".quote__icon");
-var messageQuote = document.querySelector(".quote__text");
+var inputSection = document.querySelector("#form-section");
+var favoritesSection = document.querySelector("#favorites-section");
+var quoteSection = document.querySelector("#quote-section");
+var favoritesContainer = document.querySelector("#favorites-container-section");
+var favoriteContainer = document.querySelector("#quote-button-container");
+var messageIcon = document.querySelector("#quote-icon");
+var messageQuote = document.querySelector("#quote-text");
 
 // Buttons & Inputs
 var favoriteButton = document.querySelector("#favorite-button");
 var backButton = document.querySelector("#view-main")
 var viewFavoritesButton = document.querySelector("#view-favorites");
-var messageButton = document.querySelector(".message-form__button");
+var messageButton = document.querySelector("#message-button");
 var affirmationInput = document.querySelector("#affirmation-radio");
 var mantraInput = document.querySelector("#mantra-radio");
 
@@ -24,7 +24,7 @@ viewFavoritesButton.addEventListener("click", showFavorites);
 favoriteButton.addEventListener("click", addFavorites);
 favoritesContainer.addEventListener("click", deleteFavorites)
 
-// Global variables 
+// Global variables
 var currentQuote = "";
 
 var favoriteQuotes = [];
@@ -127,11 +127,11 @@ function addFavorites() {
 }
 
 function deleteFavorites(event) {
-  var selectedItemIndex = parseInt(event.target.dataset.index, 10)
+  var selectedItemIndex = event.target.dataset.index;
   if (!isNaN(selectedItemIndex)) {
     favoriteQuotes.splice(selectedItemIndex, 1);
     refreshLocalStorage();
-    clearFavoritesHTML()
+    clearFavoritesHTML();
     populateFavorites();
   }
 }
