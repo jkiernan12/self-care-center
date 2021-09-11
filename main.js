@@ -10,7 +10,7 @@ var messageQuote = document.querySelector("#quote-text");
 
 // Buttons & Inputs
 var favoriteButton = document.querySelector("#favorite-button");
-var backButton = document.querySelector("#view-main")
+var backButton = document.querySelector("#view-main");
 var viewFavoritesButton = document.querySelector("#view-favorites");
 var messageButton = document.querySelector("#message-button");
 var affirmationInput = document.querySelector("#affirmation-radio");
@@ -22,7 +22,7 @@ messageButton.addEventListener("click", displayQuote);
 backButton.addEventListener("click", returnToMain);
 viewFavoritesButton.addEventListener("click", showFavorites);
 favoriteButton.addEventListener("click", addFavorites);
-favoritesContainer.addEventListener("click", deleteFavorites)
+favoritesContainer.addEventListener("click", deleteFavorites);
 
 // Global variables
 var currentQuote = "";
@@ -45,7 +45,7 @@ var mantras = [
   "The only constant is change.",
   "Onward and upward.",
   "I am the sky, the rest is weather."
-]
+];
 
 var affirmations = [
 "I forgive myself and set myself free.",
@@ -61,7 +61,7 @@ var affirmations = [
 "Every day I am getting healthier and stronger.",
 "I honor my body by trusting the signals that it sends me.",
 "I manifest perfect health by making smart choices."
-]
+];
 
 // Display quote functions
 function displayQuote() {
@@ -83,9 +83,9 @@ function randomArray(array) {
 
 function checkInput() {
   if (affirmationInput.checked) {
-    return affirmations
+    return affirmations;
   } else if (mantraInput.checked) {
-    return mantras
+    return mantras;
   }
 }
 
