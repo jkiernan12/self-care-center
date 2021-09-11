@@ -21,7 +21,7 @@ The deployed app can be found [here](https://jkiernan12.github.io/self-care-cent
   - BEM methodology
 
 ## How to Use
-
+![Screen Recording 2021-09-11 at 8 17 52 AM](https://user-images.githubusercontent.com/73560269/132947790-f7f93b82-d379-4290-b8eb-d735fbf9352b.gif)
 - View the app [here](https://jkiernan12.github.io/self-care-center/)
 - Select 'affirmation' or 'mantra' and click 'Receive Message'
 - Select 'Add to Favorites' to save quote and 'View Favorites' to view saved quotes
